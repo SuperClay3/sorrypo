@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For You 💙</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      color: #fff;
+      font-size: 1.3rem;
+      max-width: 600px;
+      padding: 20px;
+      position: relative;
+    }
+
+    .heart {
+      font-size: 3rem;
+      animation: float 2s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    #message {
+      margin: 20px 0;
+      line-height: 1.6;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 12px 25px;
+      font-size: 1rem;
+      background-color: #6c63ff;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      background-color: #5848d6;
+    }
+
+    /* Burst animation */
+    .burst {
+      font-size: 2.5rem;
+      color: #ffdde1;
+      animation: pop 1s ease forwards;
+    }
+
+    @keyframes pop {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.5);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="heart">💖</div>
+    <p id="message">Hi Babyy… I know I’ve been messing up a lot lately 😞</p>
+    <button onclick="nextMessage()">Next ➡️</button>
+    <p id="finalMessage" class="burst" style="display:none;">I love you baby and I'm very sorry po 💕</p>
+  </div>
+
+  <script>
+    const messages = [
+      "I know I’ve hurt you many times, and I can see how much patience you’ve lost because of me.",
+      "Every time I say I’ll change, I end up disappointing you again… and that’s not fair to you.",
+      "You don’t deserve the anger, the stress, or the pain I’ve caused.",
+      "I’ve been thinking a lot, and I realized sorry is not enough if I don’t show it in my actions.",
+      "What I truly want is to grow, not just for me, but for us — because I don’t want to keep repeating the same mistakes.",
+      "I love you deeply, and I know love means making the effort even when it’s hard.",
+      "Even if you’re tired of my words, I’ll prove through time and actions that you mean everything to me.",
+      "Please don’t give up on me yet… because you’re the best thing that ever happened in my life.",
+      "I may not be perfect, but I’ll keep trying to be the person you deserve slowly, genuinely, and truly.",
+      "I love you endlessly 💙 and I’m sorry for all the times I made you feel unloved."
+    ];
+
+    let index = 0;
+    function nextMessage() {
+      index++;
+      if (index < messages.length) {
+        document.getElementById("message").textContent = messages[index];
+      } else {
+        document.getElementById("message").textContent = 
+          "No matter how many mistakes I make, one thing never changes: my love for you 💕";
+        document.querySelector("button").style.display = "none";
+        document.querySelector(".heart").textContent = "💝";
+
+        // Show burst animation after 2 seconds
+        setTimeout(() => {
+          const finalMsg = document.getElementById("finalMessage");
+          finalMsg.style.display = "block";
+        }, 1000);
+      }
+    }
+  </script>
+</body>
+</html>
